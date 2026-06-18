@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PromptForge: Pascal's Wager Worksheet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f5;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 32px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 0;
+      color: #d1d5db;
+      line-height: 1.5;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #111827;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    textarea,
+    select,
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .confidence {
+      margin-top: 10px;
+    }
+
+    .confidence select {
+      max-width: 180px;
+    }
+
+    .subquestion {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: #111827;
+      color: white;
+    }
+
+    .secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .primary:hover {
+      background: #374151;
+    }
+
+    .secondary:hover {
+      background: #d1d5db;
+    }
+
+    #generatedPrompt {
+      white-space: pre-wrap;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 18px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      display: none;
+    }
+
+    .small-note {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #047857;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>PromptForge</h1>
+      <p>
+        Think first. Then forge your AI tutor. Complete this worksheet on Pascal's Wager, then generate a personalized AI prompt that turns your responses into targeted feedback and deliberate practice.
+      </p>
+    </header>
+
+    <div class="card">
+      <h2>1. Philosophical Positions</h2>
+      <label for="q1">In your own words, distinguish among rational theism, fideism, atheism, and agnosticism.</label>
+      <textarea id="q1"></textarea>
+      <div class="confidence">
+        <label for="c1">Confidence:</label>
+        <select id="c1">
+          <option value="">Select</option>
+          <option>1 - Very unsure</option>
+          <option>2 - Somewhat unsure</option>
+          <option>3 - Moderately confident</option>
+          <option>4 - Confident</option>
+          <option>5 - Very confident</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2. Pascal the Thinker</h2>
+      <label for="q2">Who was Blaise Pascal, and why was his background in mathematics important for understanding Pascal's Wager?</label>
+      <textarea id="q2"></textarea>
+      <div class="confidence">
+        <label for="c2">Confidence:</label>
+        <select id="c2">
+          <option value="">Select</option>
+          <option>1 - Very unsure</option>
+          <option>2 - Somewhat unsure</option>
+          <option>3 - Moderately confident</option>
+          <option>4 - Confident</option>
+          <option>5 - Very confident</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>3. Expected Utility</h2>
+      <label for="q3">Explain expected utility as if you were teaching it to a classmate who has never studied philosophy, economics, or decision theory.</label>
+      <textarea id="q3"></textarea>
+      <div class="confidence">
+        <label for="c3">Confidence:</label>
+        <select id="c3">
+          <option value="">Select</option>
+          <option>1 - Very unsure</option>
+          <option>2 - Somewhat unsure</option>
+          <option>3 - Moderately confident</option>
+          <option>4 - Confident</option>
+          <option>5 - Very confident</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>4. Decision Matrix</h2>
+
+      <div class="subquestion">
+        <label for="q4a">4a. What are the two actions available in Pascal's Wager?</label>
+        <textarea id="q4a"></textarea>
+      </div>
+
+      <div class="subquestion">
+        <label for="q4b">4b. What are the possible states of the world?</label>
+        <textarea id="q4b"></textarea>
+      </div>
+
+      <div class="subquestion">
+        <label for="q4c">4c. What outcomes result from combining each action with each possible state of the world?</label>
+        <textarea id="q4c"></textarea>
+      </div>
+
+      <div class="subquestion">
+        <label for="q4d">4d. Why does Pascal assign infinite value to one of the outcomes?</label>
+        <textarea id="q4d"></textarea>
+      </div>
+
+      <div class="confidence">
+        <label for="c4">Confidence:</label>
+        <select id="c4">
+          <option value="">Select</option>
+          <option>1 - Very unsure</option>
+          <option>2 - Somewhat unsure</option>
+          <option>3 - Moderately confident</option>
+          <option>4 - Confident</option>
+          <option>5 - Very confident</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>5. Summarizing the Wager</h2>
+      <label for="q5">Summarize Pascal's Wager in your own words as clearly and precisely as possible.</label>
+      <textarea id="q5"></textarea>
+      <div class="confidence">
+        <label for="c5">Confidence:</label>
+        <select id="c5">
+          <option value="">Select</option>
+          <option>1 - Very unsure</option>
+          <option>2 - Somewhat unsure</option>
+          <option>3 - Moderately confident</option>
+          <option>4 - Confident</option>
+          <option>5 - Very confident</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>6. Infinite Expected Utility</h2>
+      <label for="q6">Why does Pascal believe that believing in God has infinite expected utility?</label>
+      <textarea id="q6"></textarea>
+      <div class="confidence">
+        <label for="c6">Confidence:</label>
+        <select id="c6">
+          <option value="">Select</option>
+          <option>1 - Very unsure</option>
+          <option>2 - Somewhat unsure</option>
+          <option>3 - Moderately confident</option>
+          <option>4 - Confident</option>
+          <option>5 - Very confident</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>7. Objections</h2>
+
+      <div class="subquestion">
+        <label for="q7a">7a. What is the Many Gods objection, and why does it challenge Pascal's Wager?</label>
+        <textarea id="q7a"></textarea>
+      </div>
+
+      <div class="subquestion">
+        <label for="q7b">7b. What is the Zero Probability objection, and how might an atheist use it against the Wager?</label>
+        <textarea id="q7b"></textarea>
+      </div>
+
+      <div class="subquestion">
+        <label for="q7c">7c. Why might someone argue that belief cannot simply be chosen for strategic reasons?</label>
+        <textarea id="q7c"></textarea>
+      </div>
+
+      <div class="confidence">
+        <label for="c7">Confidence:</label>
+        <select id="c7">
+          <option value="">Select</option>
+          <option>1 - Very unsure</option>
+          <option>2 - Somewhat unsure</option>
+          <option>3 - Moderately confident</option>
+          <option>4 - Confident</option>
+          <option>5 - Very confident</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>8. Muddiest Point</h2>
+      <label for="q8">Which concept from this lesson remains least clear to you, and why?</label>
+      <textarea id="q8"></textarea>
+    </div>
+
+    <div class="card">
+      <h2>Generate Your AI Tutor Prompt</h2>
+      <p class="small-note">
+        After completing the worksheet, click below to generate a personalized prompt. Paste it into an AI tutor to receive feedback and targeted deliberate practice.
+      </p>
+
+      <div class="buttons">
+        <button class="primary" onclick="generatePrompt()">Generate Prompt</button>
+        <button class="secondary" onclick="copyPrompt()">Copy Prompt</button>
+        <button class="secondary" onclick="downloadPrompt()">Download .txt</button>
+      </div>
+
+      <div id="status" class="status"></div>
+      <pre id="generatedPrompt"></pre>
+    </div>
+  </div>
+
+  <script>
+    function val(id) {
+      return document.getElementById(id).value.trim() || "[No response provided]";
+    }
+
+    function generatePrompt() {
+      const prompt = `ROLE: You are an adaptive, personalized tutor for an undergraduate student.
+
+Your goal is not to provide answers immediately, but to help me deepen my understanding through questioning, hints, feedback, and deliberate practice.
+
+RULES OF ENGAGEMENT:
+- Do not simply give me answers.
+- Ask one question at a time.
+- Wait for my response before continuing.
+- If I make an error, provide hints before explanations.
+- Ask me to justify my reasoning.
+- Adapt the difficulty based on my performance.
+- End with a brief summary of strengths, weak points, and recommendations for further practice.
+
+LESSON TOPIC:
+Pascal's Wager
+
+LEARNING OBJECTIVES:
+- Distinguish among rational theism, fideism, atheism, and agnosticism.
+- Explain Blaise Pascal's contributions to mathematics and philosophy.
+- Define expected utility and explain its role in decision theory.
+- Use a decision matrix to evaluate choices under uncertainty.
+- Explain Pascal's Wager.
+- Explain why Pascal assigns infinite expected utility to belief in God.
+- Evaluate the Many Gods objection.
+- Evaluate the Zero Probability objection.
+- Evaluate the doxastic involuntarism objection.
+
+MY WORKSHEET RESPONSES:
+
+1. Philosophical Positions
+Prompt: In your own words, distinguish among rational theism, fideism, atheism, and agnosticism.
+My response:
+${val("q1")}
+Confidence:
+${val("c1")}
+
+2. Pascal the Thinker
+Prompt: Who was Blaise Pascal, and why was his background in mathematics important for understanding Pascal's Wager?
+My response:
+${val("q2")}
+Confidence:
+${val("c2")}
+
+3. Expected Utility
+Prompt: Explain expected utility as if you were teaching it to a classmate who has never studied philosophy, economics, or decision theory.
+My response:
+${val("q3")}
+Confidence:
+${val("c3")}
+
+4. Decision Matrix
+4a. What are the two actions available in Pascal's Wager?
+My response:
+${val("q4a")}
+
+4b. What are the possible states of the world?
+My response:
+${val("q4b")}
+
+4c. What outcomes result from combining each action with each possible state of the world?
+My response:
+${val("q4c")}
+
+4d. Why does Pascal assign infinite value to one of the outcomes?
+My response:
+${val("q4d")}
+Confidence:
+${val("c4")}
+
+5. Summarizing the Wager
+Prompt: Summarize Pascal's Wager in your own words as clearly and precisely as possible.
+My response:
+${val("q5")}
+Confidence:
+${val("c5")}
+
+6. Infinite Expected Utility
+Prompt: Why does Pascal believe that believing in God has infinite expected utility?
+My response:
+${val("q6")}
+Confidence:
+${val("c6")}
+
+7. Objections
+7a. What is the Many Gods objection, and why does it challenge Pascal's Wager?
+My response:
+${val("q7a")}
+
+7b. What is the Zero Probability objection, and how might an atheist use it against the Wager?
+My response:
+${val("q7b")}
+
+7c. Why might someone argue that belief cannot simply be chosen for strategic reasons?
+My response:
+${val("q7c")}
+Confidence:
+${val("c7")}
+
+8. Muddiest Point
+Prompt: Which concept from this lesson remains least clear to you, and why?
+My response:
+${val("q8")}
+
+TASK 1: Diagnostic Analysis
+Analyze my responses and identify:
+- accurate understanding
+- misconceptions
+- omissions
+- weak points
+
+Pay particular attention to concepts where my confidence is high but my explanation is weak.
+
+Do not reveal all of your analysis immediately.
+
+TASK 2: Deliberate Practice
+Identify my top one to three weak points.
+
+Design active learning exercises tailored to those weaknesses.
+
+Choose exercise formats appropriate to the skill being practiced, such as:
+- concept classification
+- decision matrix construction
+- argument reconstruction
+- case analysis
+- comparison exercises
+- objection-response practice
+- explanation and revision
+- error correction
+
+Present one exercise at a time.
+
+Provide feedback after each response.
+
+Adjust difficulty based on my performance.
+
+At the end, summarize what improved and recommend next steps.`;
+
+      const output = document.getElementById("generatedPrompt");
+      output.textContent = prompt;
+      output.style.display = "block";
+      document.getElementById("status").textContent = "Prompt generated.";
+      return prompt;
+    }
+
+    function copyPrompt() {
+      const prompt = document.getElementById("generatedPrompt").textContent || generatePrompt();
+      navigator.clipboard.writeText(prompt).then(() => {
+        document.getElementById("status").textContent = "Prompt copied to clipboard.";
+      });
+    }
+
+    function downloadPrompt() {
+      const prompt = document.getElementById("generatedPrompt").textContent || generatePrompt();
+      const blob = new Blob([prompt], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "promptforge-pascals-wager-ai-tutor-prompt.txt";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      document.getElementById("status").textContent = "Prompt downloaded.";
+    }
+  </script>
+</body>
+</html>
